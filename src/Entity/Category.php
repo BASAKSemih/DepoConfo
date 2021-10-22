@@ -29,6 +29,11 @@ class Category
      */
     private $materials;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
     public function __toString()
     {
         return $this->getName();
@@ -82,6 +87,18 @@ class Category
                 $material->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
