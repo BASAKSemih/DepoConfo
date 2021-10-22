@@ -15,6 +15,16 @@
     </head>
     <body>
         {% include 'layout/_navbar.html.twig' %}
-        {% block body %}{% endblock %}
+
+        <div class="container pt-5 mt-2">
+            {% for rubrique, messages in app.flashes   %}
+                <div class="alert alert-{{ rubrique }} text-center">
+                    {% for message in messages %}
+                         <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            {% block body %}{% endblock %}
+        </div>
     </body>
 </html>

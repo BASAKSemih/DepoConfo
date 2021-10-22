@@ -1,0 +1,25 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}Inscription a LibraryShop{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class="h3 mb-3 font-weight-normal mt-5 pt-5">Inscription</h1>
+        {{ form_start(form) }}
+        <label for="">Votre Nom de      Famille</label>
+        {{ form_row(form.lastName) }}
+        <label for="">Votre Prénom</label>
+        {{ form_row(form.firstName) }}
+        <label for="">Votre Email</label>
+        {{ form_row(form.email) }}
+        <label for="">Crée votre Mot de passe</label>
+        {{ form_row(form.password.first) }}
+        <label for="">Crée votre Mot de passe</label>
+        {{ form_row(form.password.second) }}
+        <div></div>
+        {{ form_widget(form.submit, { 'label': 'Crée sont compte' }) }}
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
