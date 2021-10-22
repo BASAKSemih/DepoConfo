@@ -7,22 +7,17 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 
-class RegisterTest extends WebTestCase
+class LoginTest extends WebTestCase
 {
-    public function testSuccessfulRegistration(): void
+    public function testLogin(): void
     {
         $client = static::createClient();
         /** @var RouterInterface $router */
         $router = $client->getContainer()->get("router");
-        $crawler = $client->request(Request::METHOD_GET, $router->generate('app_register'));
-
-        $form = $crawler->filter("form[name=user]")->form([
-            "user[firstName]" => "John",
-            "user[lastName]" => "Doe",
-            "user[email]" => "john@doe.com",
-            "user[password][first]" => "password",
-            "user[password][second]" => "password"
-
+        $crawler = $client->request(Request::METHOD_GET, $router->generate("app_login"));
+        $form = $crawler->filter("form[name=login]")->form([
+            "email"  => 'john@doe.com',
+            "password" => 'password'
         ]);
         $client->submit($form);
         self::assertResponseStatusCodeSame(Response::HTTP_FOUND);

@@ -29,7 +29,7 @@ class RegisterController extends AbstractController
 
 
     /**
-     * @Route("/inscription", name="security_register")
+     * @Route("/inscription", name="app_register")
      */
     public function registration(Request $request)
     {
