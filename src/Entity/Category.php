@@ -25,9 +25,9 @@ class Category
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Material::class, mappedBy="category")
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="category")
      */
-    private $materials;
+    private $articles;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -41,7 +41,7 @@ class Category
 
     public function __construct()
     {
-        $this->materials = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -62,29 +62,29 @@ class Category
     }
 
     /**
-     * @return Collection|Material[]
+     * @return Collection|Article[]
      */
-    public function getMaterials(): Collection
+    public function getArticles(): Collection
     {
-        return $this->materials;
+        return $this->articles;
     }
 
-    public function addMaterial(Material $material): self
+    public function addArticle(Article $articles): self
     {
-        if (!$this->materials->contains($material)) {
-            $this->materials[] = $material;
-            $material->setCategory($this);
+        if (!$this->articles->contains($articles)) {
+            $this->articles[] = $articles;
+            $articles->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeMaterial(Material $material): self
+    public function removeArticle(Article $articles): self
     {
-        if ($this->materials->removeElement($material)) {
+        if ($this->articles->removeElement($articles)) {
             // set the owning side to null (unless already changed)
-            if ($material->getCategory() === $this) {
-                $material->setCategory(null);
+            if ($articles->getCategory() === $this) {
+                $articles->setCategory(null);
             }
         }
 

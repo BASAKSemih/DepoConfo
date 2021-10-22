@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\MaterialRepository;
+use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=MaterialRepository::class)
+ * @ORM\Entity(repositoryClass=ArticleRepository::class)
  */
-class Material
+class Article
 {
     /**
      * @ORM\Id
@@ -23,7 +23,7 @@ class Material
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="materials")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
@@ -42,6 +42,16 @@ class Material
      * @ORM\Column(type="integer")
      */
     private $price;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isBest;
+
+    public function __construct()
+    {
+        $this->isBest = false;
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +114,18 @@ class Material
     public function setPrice(int $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getIsBest(): ?bool
+    {
+        return $this->isBest;
+    }
+
+    public function setIsBest(bool $isBest): self
+    {
+        $this->isBest = $isBest;
 
         return $this;
     }
