@@ -16,7 +16,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/catégorie/{categorySlug}", name="category_show")
+     * @Route("/catégorie/{categorySlug}", name="category_show", priority="-2")
      */
     public function showAllProductFromCategory($categorySlug)
     {

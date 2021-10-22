@@ -48,6 +48,16 @@ class Article
      */
     private $isBest;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $quantity;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $oldPrice;
+
     public function __construct()
     {
         $this->isBest = false;
@@ -126,6 +136,30 @@ class Article
     public function setIsBest(bool $isBest): self
     {
         $this->isBest = $isBest;
+
+        return $this;
+    }
+
+    public function getQuantity(): ?float
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(float $quantity): self
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    public function getOldPrice(): ?int
+    {
+        return $this->oldPrice;
+    }
+
+    public function setOldPrice(int $oldPrice): self
+    {
+        $this->oldPrice = $oldPrice;
 
         return $this;
     }

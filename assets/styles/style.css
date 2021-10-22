@@ -149,6 +149,7 @@ a:hover {
     opacity: 0.6;
 }
 
+
 .section-products .single-product .part-2 .product-old-price::after {
     position: absolute;
     content: "";

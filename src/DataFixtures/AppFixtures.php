@@ -43,6 +43,7 @@ class AppFixtures extends Fixture
                 $article->setSlug(strtolower($this->slugger->slug($article->getName())));
                 $article->setCategory($category);
                 $article->setDescription("lorem lorem lorem");
+                $article->setQuantity(mt_rand(1, 20));
                 $article->setPrice(mt_rand(1000, 2000));
                 $manager->persist($article);
             }
