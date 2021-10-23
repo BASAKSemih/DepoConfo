@@ -25,8 +25,11 @@
                             </div>
                             <div class="part-2">
                                 <h3 class="product-title">{{ article.name }}</h3>
-                                <h4 class="product-old-price">$79.99</h4>
-                                <h4 class="product-price">{{ (article.price/100) }} €</h4>
+                                <h4 class="product-price">{{ (article.price|amount) }} </h4>
+                                {% if article.oldPrice == 0 %}
+                                {% else %}
+                                    <h4 class="product-old-price">{{ (article.oldPrice/100) }} €</h4>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
