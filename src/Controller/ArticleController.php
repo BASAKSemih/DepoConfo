@@ -10,13 +10,13 @@ class ArticleController extends AbstractController
 {
 
     /**
-     * @Route("/{categorySlug}/{articleSlug}", name="article_show")
+     * @Route("/{categorySlug}/{articleSlug}", name="article_show", priority="-50")
      */
     public function showArticle(ArticleRepository $articleRepository, $articleSlug)
     {
         $article = $articleRepository->findOneBySlug($articleSlug);
         if (!$article) {
-            $this->addFlash('error', "Le produit demander n'existe pas");
+            $this->addFlash('error', "Le produit demander n'existe passss");
             return $this->redirectToRoute('homePage');
         }
         return $this->render('home/article/show.html.twig', [

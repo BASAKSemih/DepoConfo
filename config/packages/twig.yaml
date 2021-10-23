@@ -3,6 +3,7 @@ twig:
     globals:
         categoryRepository: "@App\\Repository\\CategoryRepository"
         articleRepository: "@App\\Repository\\ArticleRepository"
+        cartService:    "@App\\Controller\\User\\Cart\\CartService"
 
 when@test:
     twig:
