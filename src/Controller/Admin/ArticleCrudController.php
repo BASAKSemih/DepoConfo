@@ -6,6 +6,7 @@ use App\Entity\Article;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
@@ -27,6 +28,11 @@ class ArticleCrudController extends AbstractCrudController
         SlugField::new('slug')->setTargetFieldName('name'),
         AssociationField::new('category'),
         TextareaField::new('description'),
+        ImageField::new('image')
+                ->setBasePath('uploads/')
+                ->setUploadDir('public/uploads/')
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setRequired(false),
         MoneyField::new('price')->setCurrency('EUR'),
             MoneyField::new('oldPrice')->setCurrency('EUR'),
         BooleanField::new('isBest'),

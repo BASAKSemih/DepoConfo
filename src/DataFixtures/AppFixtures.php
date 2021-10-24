@@ -30,22 +30,22 @@ class AppFixtures extends Fixture
         $manager->persist($user);
 
 
-        for ($c = 0; $c < 5; $c++) {
-            $category = new Category();
-            $category->setName($faker->name);
-            $category->setSlug(strtolower($this->slugger->slug($category->getName())));
-            $manager->persist($category);
-            for ($a = 0; $a < 5; $a++) {
-                $article = new Article();
-                $article->setName($faker->name);
-                $article->setSlug(strtolower($this->slugger->slug($article->getName())));
-                $article->setCategory($category);
-                $article->setDescription($faker->text);
-                $article->setQuantity(mt_rand(1, 20));
-                $article->setPrice(mt_rand(1000, 2000));
-                $manager->persist($article);
-            }
-        }
+//        for ($c = 0; $c < 5; $c++) {
+//            $category = new Category();
+//            $category->setName($faker->name);
+//            $category->setSlug(strtolower($this->slugger->slug($category->getName())));
+//            $manager->persist($category);
+//            for ($a = 0; $a < 5; $a++) {
+//                $article = new Article();
+//                $article->setName($faker->name);
+//                $article->setSlug(strtolower($this->slugger->slug($article->getName())));
+//                $article->setCategory($category);
+//                $article->setDescription($faker->text);
+//                $article->setQuantity(mt_rand(1, 20));
+//                $article->setPrice(mt_rand(1000, 2000));
+//                $manager->persist($article);
+//            }
+//        }
 
         $manager->flush();
     }
