@@ -58,6 +58,11 @@ class Article
      */
     private $oldPrice;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
+
     public function __construct()
     {
         $this->isBest = false;
@@ -160,6 +165,18 @@ class Article
     public function setOldPrice(int $oldPrice): self
     {
         $this->oldPrice = $oldPrice;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
