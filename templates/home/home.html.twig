@@ -19,7 +19,7 @@
                         <div class="part-1" >
                             <img src="/uploads/{{ article.image }}" alt="{{ article.name }}" class="">
                             <ul>
-                                <li><a href="{{ path('cart_add', {'idArticle': article.id}) }}"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="{{ path('cart_add', {'idArticle': article.id}) }}?stayHere=true"><i class="fas fa-shopping-cart"></i></a></li>
                                 <li>
                                     <a href="{{ path('article_show', {'categorySlug': article.category.name, 'articleSlug': article.slug}) }}"><i class="fas fa-info"></i></a>
                                 </li>

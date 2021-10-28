@@ -30,6 +30,9 @@ class CartController extends AbstractController
         }
         $this->cartService->add($idArticle);
         $this->addFlash('success', "Le produit à été ajouter au panier");
+        if ($request->query->get('stayHere')) {
+            return $this->redirectToRoute('homePage');
+        }
         if ($request->query->get('returnToCart')) {
             return $this->redirectToRoute('cart_show');
         }
