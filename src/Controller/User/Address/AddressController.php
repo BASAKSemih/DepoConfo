@@ -25,14 +25,13 @@ class AddressController extends AbstractController
     public function createAddress(Request $request)
     {
         $user = $this->getUser();
-        if (!$user){
+        if (!$user) {
             $this->addFlash('warning', "Vous devez vous connecter pour faire cette opération");
             return $this->redirectToRoute('app_login');
         }
         $address = new Address();
         $form = $this->createForm(AddressType::class, $address)->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $address->setUser($user);
             $this->entityManger->persist($address);
             $this->entityManger->flush();
@@ -43,5 +42,4 @@ class AddressController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-
 }

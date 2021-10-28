@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte - Ajouter une adresse de livraison{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class="h3 mb-3 font-weight-normal mt-5 pt-5">Inscription</h1>
+        {{ form_start(form) }}
+        <label for="">Nommez l'adresse de livraison</label>
+        {{ form_row(form.addressName) }}
+        <label for="">Ville</label>
+        {{ form_row(form.city) }}
+        <label for="">Région</label>
+        {{ form_row(form.region) }}
+        <label for="">Code Postale</label>
+        {{ form_row(form.postalCode) }}
+        <label for="">Addresse</label>
+        {{ form_row(form.address) }}
+        <label for="">Numéro de téléphone </label>
+        {{ form_row(form.phoneNumber) }}
+        <div></div>
+        {{ form_widget(form.submit, { 'label': "Ajouter l'adresse" }) }}
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
