@@ -17,6 +17,10 @@
                         <div id="product-1" class="single-product">
                             <div class="part-1">
                                 <img src="/uploads/{{ article.image }}" alt="{{ article.name }}" class="">
+                                {% if article.oldPrice == 0 %}
+                                {% else %}
+                                    <span class="discount">PROMOTION</span>
+                                {% endif %}
                                 <ul>
                                     <li><a href="{{ path('cart_add', {'idArticle': article.id}) }}?stayHere=true"><i class="fas fa-shopping-cart"></i></a></li>
                                     <li>
@@ -26,7 +30,7 @@
                             </div>
                             <div class="part-2">
                                 <h3 class="product-title">{{ article.name }}</h3>
-                                <h4 class="product-price">{{ (article.price|amount) }} </h4>
+                                <h4 class="product-price">{{ (article.price/100) }} €</h4>
                                 {% if article.oldPrice == 0 %}
                                 {% else %}
                                     <h4 class="product-old-price">{{ (article.oldPrice/100) }} €</h4>

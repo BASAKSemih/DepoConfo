@@ -45,7 +45,8 @@ class OrderController extends AbstractController
             $this->addFlash('warning', 'Vous devez être connecter');
             return $this->redirectToRoute('app_login');
         }
-        if (!$user->getAddresses()) {
+        $adresse = $this->addressRepository->findByUser($user);
+        if (!$adresse) {
             $this->addFlash('warning', 'Veuillez ajouter une adresse avant de procéder a la commande');
             return $this->redirectToRoute('user_add_address');
         }
