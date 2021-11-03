@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Récapitulatif - DepoConfo{% endblock %}
+
+{% block body %}
+
+    <section class="container mt-5">
+        <h2>Ma commande</h2>
+        <hr>
+        <div class="row">
+
+            <div class="col-md-6">
+                <h4>L'adresse de livraison</h4>
+                {{ address }}
+
+            </div>
+            <div class="col-md-6">
+                <div class="text-center">
+                    <b>Récapitulatif de la commande</b><br/>
+                    {% for article in detailedCart %}
+                        <div class="row">
+                            <div class="col-2 my-auto">
+                                <img src="/uploads/{{ article.article.image }}" alt="{{ article.article.name }}" class="">
+                            </div>
+                            <div class="col-8 my-auto">
+                                {{ article.article.name }}
+                            </div>
+                            <div class="col-2 my-auto">
+                                {{ article.quantity }}
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                    <a href="{{ path('stripe_session', {'idOrder': order.id}) }}" class="btn btn-success" id="checkout-button">Valider ma commande</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

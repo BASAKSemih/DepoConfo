@@ -3,6 +3,7 @@
 {% block title %}Mon panier{% endblock %}
 
 {% block body %}
+    <section class="container mt-3">
     <h1>Panier</h1>
     {% if articles | length > 0 %}
 
@@ -46,10 +47,8 @@
             </tfoot>
         </table>
         {% if app.user %}
-            <h2>Confirmer Votre Commande</h2>
+            <a href="{{ path('order_command') }}" class="btn btn-success">Confirmer Votre Commande</a>
 
-
-            <button class="btn btn-success">Je Confirme</button>
 
         {% else %}
 
@@ -61,5 +60,5 @@
     {% else %}
         <h2>Le panier est vide</h2>
     {% endif %}
-
+    </section>
 {% endblock %}

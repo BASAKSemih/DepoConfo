@@ -21,5 +21,6 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\Controller\User\Order\StripeController:
+        arguments:
+            $publicKey: "sk_test_51HwXP2B2SeaKwUfJbzUaz94iABuD30I08sQ16YOlQoynYd3Udbgp9DsXk0zKOEJguUvLrVBTWCuqyP1cKIBSb7sP00lkPugdxQ"
