@@ -8,6 +8,7 @@ use App\Entity\Order;
 use App\Entity\OrderDetails;
 use App\Entity\User;
 use App\Form\OrderType;
+use App\Repository\AddressRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,9 +19,11 @@ class OrderController extends AbstractController
 {
     protected EntityManagerInterface $entityManager;
     protected CartService $cartService;
+    protected AddressRepository $addressRepository;
 
-    public function __construct(EntityManagerInterface $entityManager, CartService $cartService)
+    public function __construct(EntityManagerInterface $entityManager, CartService $cartService, AddressRepository $addressRepository)
     {
+        $this->addressRepository = $addressRepository;
         $this->entityManager = $entityManager;
         $this->cartService = $cartService;
     }
@@ -51,7 +54,7 @@ class OrderController extends AbstractController
 
 
     /**
-     * @Route("/mon-panier/je-passe-ma-commande/recapitulatif", name="order_command_recap")
+     * @Route("/mon-panier/je-passe-ma-commande/recapitulatif", name="order_command_recap", methods={"POST"})
      */
     public function orderUserAdd(Request $request): Response
     {
@@ -84,10 +87,13 @@ class OrderController extends AbstractController
                     ->setTotal($article->getTotal());
                 $this->entityManager->persist($orderDetails);
             }
-            $this->entityManager->flush();
+          //  $this->entityManager->flush();
+            return $this->render('user/order/recap.html.twig', [
+                'detailedCart' => $detailedCart,
+                'address' => $address
+            ]);
         }
-        return $this->render('user/order/recap.html.twig', [
-            'detailedCart' => $detailedCart
-        ]);
+        $this->addFlash('error', 'Erreur veuillez ré-essayer');
+        return $this->redirectToRoute('cart_show');
     }
 }
