@@ -31,7 +31,7 @@
                         </div>
 
                     {% endfor %}
-                    <a href="{{ path('stripe_session') }}" class="btn btn-success" id="checkout-button">Valider ma commande</a>
+                    <a href="{{ path('stripe_session', {'idOrder': order.id}) }}" class="btn btn-success" id="checkout-button">Valider ma commande</a>
                 </div>
 
             </div>

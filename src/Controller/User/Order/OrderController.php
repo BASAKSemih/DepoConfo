@@ -23,8 +23,11 @@ class OrderController extends AbstractController
     protected CartService $cartService;
     protected AddressRepository $addressRepository;
 
-    public function __construct(EntityManagerInterface $entityManager, CartService $cartService, AddressRepository $addressRepository)
-    {
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        CartService $cartService,
+        AddressRepository $addressRepository
+    ) {
         $this->addressRepository = $addressRepository;
         $this->entityManager = $entityManager;
         $this->cartService = $cartService;
@@ -93,7 +96,8 @@ class OrderController extends AbstractController
 
             return $this->render('user/order/recap.html.twig', [
                 'detailedCart' => $detailedCart,
-                'address' => $address
+                'address' => $address,
+                'order' => $order
             ]);
         }
         $this->addFlash('error', 'Erreur veuillez ré-essayer');
