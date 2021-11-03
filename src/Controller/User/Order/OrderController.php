@@ -10,6 +10,8 @@ use App\Entity\User;
 use App\Form\OrderType;
 use App\Repository\AddressRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -75,7 +77,6 @@ class OrderController extends AbstractController
                 ->setIsPaid(0);
 
             $this->entityManager->persist($order);
-
             foreach ($detailedCart as $article) {
                 $orderDetails = new OrderDetails();
 
@@ -87,7 +88,9 @@ class OrderController extends AbstractController
                     ->setTotal($article->getTotal());
                 $this->entityManager->persist($orderDetails);
             }
-          //  $this->entityManager->flush();
+            $this->entityManager->flush();
+
+
             return $this->render('user/order/recap.html.twig', [
                 'detailedCart' => $detailedCart,
                 'address' => $address
