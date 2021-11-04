@@ -17,16 +17,6 @@ class CartService
         $this->articleRepository = $articleRepository;
     }
 
-    protected function getCart()
-    {
-        return $this->session->get('cart', []);
-    }
-
-    protected function saveCart(array $cart)
-    {
-        $this->session->set('cart', $cart);
-    }
-
     public function add(int $idArticle)
     {
         $cart = $this->getCart();
@@ -35,6 +25,16 @@ class CartService
         }
         $cart[$idArticle]++;
         $this->saveCart($cart);
+    }
+
+    protected function getCart()
+    {
+        return $this->session->get('cart', []);
+    }
+
+    protected function saveCart(array $cart)
+    {
+        $this->session->set('cart', $cart);
     }
 
     public function getTotal(): int

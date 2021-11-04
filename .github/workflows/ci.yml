@@ -60,4 +60,4 @@ jobs:
       - name: Analyze coding style
         run: php vendor/bin/phpcs
       - name: Analyse Static Code
-        run: php vendor/bin/phpinsights --no-interaction --min-quality=80 --min-complexity=80 --min-architecture=80 --min-style=80
+        run: php vendor/bin/phpinsights --no-interaction --min-quality=75 --min-complexity=75 --min-architecture=75 --min-style=75

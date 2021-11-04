@@ -3,7 +3,6 @@
 namespace App\Controller\User\Order;
 
 use App\Controller\User\Cart\CartService;
-use App\Entity\OrderDetails;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
