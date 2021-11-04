@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <section class="container mt-5">
+        <h3>Bienvenue {{ user.lastName }} {{ user.firstName }} à votre espace personnelle</h3>
+
+
+        <a href="{{ path('user_add_address') }}" class="btn btn-info btn-sm">Ajouter une adresse de livraison</a>
+        <a href="{{ path('address_show') }}" class="btn btn-info btn-sm">Voir mes adresses de livraison</a>
+    </section>
+
+
+{% endblock %}
