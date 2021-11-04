@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<div class="container mt-5">
+    <!-- Code by w3codegenerator.com -->
+    <div class="table-responsive">
+        <table class="table  table-bordered table-hover">
+            <thead class="table-info">
+            <tr>
+                <th>Nom de l'adresse</th>
+                <th>Adresse</th>
+                <th>Région</th>
+                <th>Ville</th>
+                <th>Code postale</th>
+                <th>Numéro de téléphone</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for address in address %}
+            <tr>
+                <th scope="row">{{ address.addressName }}</th>
+                <td>{{ address.address }}</td>
+                <td>{{ address.region }}</td>
+                <td>{{ address.city }}</td>
+                <td>{{ address.postalCode }}</td>
+                <td>{{ address.phoneNumber }}</td>
+                <td>
+                    <a href="{{ path('delete_address', {'idAddress': address.id}) }}" class="btn btn-danger btn-sm">Supprimer l'adresse</a>
+                </td>
+            </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+
+
+
+</div>
+
+{% endblock %}
