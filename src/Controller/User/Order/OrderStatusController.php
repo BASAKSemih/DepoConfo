@@ -40,7 +40,9 @@ class OrderStatusController extends AbstractController
         $this->entityManager->flush();
 
 
-        return $this->render('user/order/success.html.twig');
+        return $this->render('user/order/success.html.twig', [
+            'order' => $order
+        ]);
     }
 
     /**

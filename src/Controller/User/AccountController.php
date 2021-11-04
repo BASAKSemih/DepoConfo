@@ -39,4 +39,6 @@ class AccountController extends AbstractController
             'address' => $address
         ]);
     }
+
+    //TODO VOIR MES COMMANDES, VOIR LE STATUS DES COMMANDES ECT.. ECT.
 }
